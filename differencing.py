@@ -28,6 +28,8 @@ def __tridiag(ngrid, beta):
     Utility function which returns a tridiagonal matrix with value (-beta) 
     along the main diagonal and (1+2*beta) along the diagonals just above and 
     below the main diagonal.
+    
+    Matrix is constructed using the code snippet provided in section 2.5.2. 
     """
     
     return (1 + 2*beta)*np.eye(ngrid) - beta*(np.eye(ngrid, k=-1) + 
@@ -102,6 +104,26 @@ def diffus(ngrid, A_inv, f):
     """
     # solve for f^(n+1) given f^n according to the diffusion equation
     # matrix has already been built + inverted outside this function
-    f[1:ngrid-1] = np.matmul(A_inv[1:ngrid-1, 1:ngrid-1], f[1:ngrid-1])
+    #f[1:ngrid-1] = np.matmul(A_inv[1:ngrid-1, 1:ngrid-1], f[1:ngrid-1])
+    f[1:ngrid-1] = np.matmul(A_inv, f)[1:ngrid-1]
     return f
 
+
+## ALTERNATIVE METHOD FOR SOLVING FOR f WHICH IS PROBABLY SLOWER BECAUSE YOU 
+## KEEP RE-INVERTING MATRIX A, WHEREAS FUNCTION ABOVE USES PRE-INVERTED MATRIX
+#def diffus(ngrid, A, f):
+#    """
+#    ngrid: dimension of square matrix (int)
+#    A:     matrix A which satisfies f**(n+1) = inverse(A) * f**n in the 
+#           implicit method for solving the diffusion equation 
+#    f:     the array to update (array)
+#    
+#    Compute f**(n+1) given all the parameters of the space/time-grid encoded in
+#    the matrix A_inv which satisfies f**(n+1) = A_inv * f**n (Eqn. (19)). Used
+#    to solve the diffusion equation. The quantity f is changed in-place and 
+#    then returned.  
+#    """
+#    # solve for f^(n+1) given f^n according to the diffusion equation
+#    # matrix has already been built + inverted outside this function
+#    f = np.linalg.solve(A, f)
+#    return f

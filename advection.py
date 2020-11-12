@@ -22,24 +22,26 @@ FTCS method is always numerically unstable, even when the Courant condition
 (DT <= DX/U, Eqn. (13) ) is satisfied. Lax-Friedrichs, conversely, is stable.   
 """
 
+## imports
 import numpy as np
-
-from differencing import advec_FTCS, advec_LF
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-
 from matplotlib import rc
 rc('text', usetex=True)
 
-## CONSTANTS
+## my script
+from differencing import advec_FTCS, advec_LF
+
+## CONSTANTS ##################################################################
 NGRID = 50 # gridsize
 NTSTEPS = 2500 # no. of time steps
 DT = 1 # size of timestep
 DX = 1 # size of spatial step
 U = -0.1 # velocity
 
-## FINITE DIFFERENCING
+
+## FINITE DIFFERENCING SETUP ##################################################
 # set up the 1D spatial grid
 xgrid = np.arange(NGRID)*DX
 
@@ -47,6 +49,8 @@ xgrid = np.arange(NGRID)*DX
 f1 = np.arange(NGRID)*DX/NGRID # for FTCS
 f2 = np.arange(NGRID)*DX/NGRID # for Lax-Friedrich
 
+
+## PLOTTING ###################################################################
 # set up the plots
 plt.ion() # interactive on
 fig, axes = plt.subplots(1,2, figsize=(12,12)) # 1 x 2 array of subplots
@@ -85,7 +89,8 @@ axes[0].xaxis.set_major_locator(
 axes[1].xaxis.set_major_locator(
         ticker.MultipleLocator(NGRID//5))
 
-# time evolution
+
+## TIME EVOLUTION #############################################################
 for i in range(NTSTEPS):
     
     # update f1 with FTCS

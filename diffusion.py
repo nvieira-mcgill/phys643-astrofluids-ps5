@@ -6,26 +6,28 @@ Created on Wed Nov 11 16:53:17 2020
 @diffusion.py
 """
 
+## imports
 import numpy as np
-
-from differencing import diffus_matr_build, diffus
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-
 from matplotlib import rc
 rc('text', usetex=True)
 
-## CONSTANTS
+## my script
+from differencing import diffus_matr_build, diffus 
+
+## CONSTANTS ##################################################################
 NGRID = 50 # gridsize
 NTSTEPS = 2500 # no. of time steps
 DT = 1 # size of timestep
 DX = 1 # size of spatial step
-D_1 = 0.8 # diffusion coefficient #1
-D_2 = 0.08 # diffusion coefficient #2
+D_1 = 0.5 # diffusion coefficient #1
+D_2 = 0.1 # diffusion coefficient #2
 U = -0.1 # velocity
 
-## FINITE DIFFERENCING
+
+## FINITE DIFFERENCING SETUP ##################################################
 # set up the 1D spatial grid
 xgrid = np.arange(NGRID)*DX
 
@@ -33,13 +35,23 @@ xgrid = np.arange(NGRID)*DX
 f1 = np.arange(NGRID)*DX/NGRID # for D=D_1
 f2 = np.arange(NGRID)*DX/NGRID # for D=D_2
 
-# build the matrix
+# build the matrices
 A1 = diffus_matr_build(NGRID, DX, DT, D_1) # for D=D_1
-A1_inv = np.linalg.inv(A1)
+A1[0][0] = 1 # set boundary conditions
+A1[0][1] = 0
+A1[-1][-1] = 1 + 2*D_1*DT/(DX**2)
+
 A2 = diffus_matr_build(NGRID, DX, DT, D_2) # for D=D_1
+A2[0][0] = 1 # set boundary conditions
+A2[0][1] = 0
+A2[-1][-1] = 1 + D_2*DT/(DX**2)
+
+# invert the matrices
+A1_inv = np.linalg.inv(A1)
 A2_inv = np.linalg.inv(A2)
 
 
+## PLOTTING ###################################################################
 # set up the plots
 plt.ion() # interactive on
 fig, axes = plt.subplots(1,2, figsize=(12,12)) # 1 x 2 array of subplots
@@ -78,14 +90,17 @@ axes[0].xaxis.set_major_locator(
 axes[1].xaxis.set_major_locator(
         ticker.MultipleLocator(NGRID//5))
 
-# time evolution
+
+## TIME EVOLUTION #############################################################
 for i in range(NTSTEPS):
     
     # update f1 (D=D_1) with implicit method for diffusion
     f1 = diffus(NGRID, A1_inv, f1)
+    #f1 = diffus(NGRID, A1, f1)
     
     # update f2 (D=D_2) with implicit method for diffusion
     f2 = diffus(NGRID, A2_inv, f2)
+    #f2 = diffus(NGRID, A2, f2)
     
     # update the plots
     plt1.set_ydata(f1)
