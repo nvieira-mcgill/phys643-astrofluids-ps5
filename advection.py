@@ -4,6 +4,22 @@
 Created on Tue Nov  3 12:08:17 2020
 @author: Nicholas Vieira
 @advection.py
+
+In this script, WHC = the "PHYS643: Writing Hydro Codes" document. All 
+equations come from this document.
+
+Solve the advection equation (Eqn. (6)) using 2 finite differencing methods:
+    
+    1. Forward-Time Central-Space (FTCS)
+    2. Lax-Friedrichs
+    
+On a 1D "grid". Finite differencing is performed using the constants set at
+the beginning of this script. The time evolution of a general quantity f in the
+advection equation is shown in an animation. 
+
+The FTCS and Lax-Friedrichs methods are compared, and it is shown that the 
+FTCS method is always numerically unstable, even when the Courant condition 
+(DT <= DX/U, Eqn. (13) ) is satisfied. Lax-Friedrichs, conversely, is stable.   
 """
 
 import numpy as np
