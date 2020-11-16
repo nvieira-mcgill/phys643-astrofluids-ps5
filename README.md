@@ -1,9 +1,7 @@
 
 
-Nicholas Vieira
-=====================
-Python 3.7
-===================
+**Nicholas Vieira**
+**Python 3.7**
 **Collaborator: Sabrina Berger**
 
 This repository contains the following scripts which constitute a library of
@@ -20,8 +18,8 @@ These scripts are called by the following 3 scripts:
 The first of which provides the solution to question #3 of the assignment, and so 
 forth. 
 
-ANSWER TO Q5:
-=============
+
+**5 1-Dimensional Hydro solver**
 
 As the amplitude of the Gaussian perturbation increases, the solution becomes 
 increasingly unstable. In particular:
