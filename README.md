@@ -21,14 +21,14 @@ The first of which provides the solution to question #3 of the assignment, and s
 forth. 
 
 
-**5 1-Dimensional Hydro solver**
+**[5] 1-Dimensional Hydro solver**
 
 As the amplitude of the Gaussian perturbation increases, the solution becomes 
 increasingly unstable. In particular:
-- For a density with baseline offset 100.0 and perturbation amplitude 0.5, 
-  the solution is stable.
+- For a density with baseline offset ```OFFSET=100.0``` and perturbation 
+  amplitude ```AMP=0.5```, the solution is stable.
 - For a density with the same base offset and a perturbation amplitude of 
-  10.0, the solution blows up, and the amplitude of the sound waves tends to 
-  infinity. The hydro solver eventually crashes under these conditions.
+  ```AMP=10.0```, the solution blows up, and the amplitude of the sound waves 
+  tends to infinity. The hydro solver eventually crashes under these conditions.
 
 A shock begins to appear 
