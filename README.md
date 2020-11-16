@@ -18,9 +18,16 @@ These scripts are called by the following 3 scripts:
 - ```Q4_diffusion_advection.py```
 - ```Q5_1Dhydro.py```
 
-
 The first of which provides the solution to question #3 of the assignment, and so 
 forth. 
+
+All scripts can be run via the command line via e.g. 
+
+	```>>> python Q3_advection.py```
+
+With the appropriate dependencies, i.e., 
+- matplotlib                3.0.3
+- numpy                     1.16.2
 
 
 **[5] 1-Dimensional Hydro solver**
