@@ -1,9 +1,11 @@
 
-=====================
+
 NAME: Nicholas Vieira
-PYTHON VERSION: 3.7
-COLLABORATOR: Sabrina Berger
 =====================
+PYTHON VERSION: 3.7
+===================
+COLLABORATOR: Sabrina Berger
+============================
 
 This repository contains the following scripts which constitute a library of
 functions:
@@ -19,7 +21,6 @@ These scripts are called by the following 3 scripts:
 The first of which provides the solution to question #3 of the assignment, and so 
 forth. 
 
-=============
 ANSWER TO Q5:
 =============
 
