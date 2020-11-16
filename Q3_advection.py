@@ -3,10 +3,13 @@
 """
 Created on Tue Nov  3 12:08:17 2020
 @author: Nicholas Vieira
-@advection.py
+@Q3_advection.py
 
 In this script, WHC = the "PHYS643: Writing Hydro Codes" document. All 
 equations come from this document.
+
+This script provides an answer to Question 3 of the computing assignment for
+PHYS643.
 
 Solve the advection equation (Eqn. (6)) using 2 finite differencing methods:
     
@@ -34,7 +37,7 @@ rc('text', usetex=True)
 from differencing import advec_FTCS, advec_LF
 
 ## CONSTANTS ##################################################################
-NGRID = 50 # gridsize
+NGRID = 100 # gridsize
 NTSTEPS = 2500 # no. of time steps
 DT = 1 # size of timestep
 DX = 1 # size of spatial step
@@ -56,8 +59,8 @@ plt.ion() # interactive on
 fig, axes = plt.subplots(1,2, figsize=(12,12)) # 1 x 2 array of subplots
 
 # initial conditions as faded grey lines, for reference
-axes[0].plot(xgrid, f1, color="k", ls="-", alpha=0.7)
-axes[1].plot(xgrid, f2, color="k", ls="-", alpha=0.7)
+axes[0].plot(xgrid, f1, color="k", ls="-", alpha=0.5)
+axes[1].plot(xgrid, f2, color="k", ls="-", alpha=0.5)
 
 # fix y limits for easy comparison
 axes[0].set_ylim(-0.05, 2.05)
@@ -85,9 +88,9 @@ axes[0].tick_params(axis="y", labelsize=20)
 axes[1].tick_params(axis="x", labelsize=20)
 axes[1].tick_params(axis="y", labelsize=20)
 axes[0].xaxis.set_major_locator(
-        ticker.MultipleLocator(NGRID//5)) # enforce x-axis has exactly 6 ticks
+        ticker.MultipleLocator((xgrid[-1]+1)/5)) # enforce x-axis has 6 ticks
 axes[1].xaxis.set_major_locator(
-        ticker.MultipleLocator(NGRID//5))
+        ticker.MultipleLocator((xgrid[-1]+1)/5))
 
 
 ## TIME EVOLUTION #############################################################

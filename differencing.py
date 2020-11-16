@@ -5,8 +5,8 @@ Created on Wed Nov 11 15:42:42 2020
 @author: Nicholas Vieira
 @differencing.py
 
-Functions which are called by advection.py and diffusion.py. Functions perform
-various steps of finite differencing, including:
+Functions which are called by Q3_advection.py and Q4_diffusion_advection.py. 
+Functions perform various steps of finite differencing, including:
     - Forward-Time Central-Space method, for advection
     - Lax-Friedrichs method, for advection
     - An implicit method for solving the diffusion equation
@@ -107,23 +107,3 @@ def diffus(ngrid, A_inv, f):
     #f[1:ngrid-1] = np.matmul(A_inv[1:ngrid-1, 1:ngrid-1], f[1:ngrid-1])
     f[1:ngrid-1] = np.matmul(A_inv, f)[1:ngrid-1]
     return f
-
-
-## ALTERNATIVE METHOD FOR SOLVING FOR f WHICH IS PROBABLY SLOWER BECAUSE YOU 
-## KEEP RE-INVERTING MATRIX A, WHEREAS FUNCTION ABOVE USES PRE-INVERTED MATRIX
-#def diffus(ngrid, A, f):
-#    """
-#    ngrid: dimension of square matrix (int)
-#    A:     matrix A which satisfies f**(n+1) = inverse(A) * f**n in the 
-#           implicit method for solving the diffusion equation 
-#    f:     the array to update (array)
-#    
-#    Compute f**(n+1) given all the parameters of the space/time-grid encoded in
-#    the matrix A_inv which satisfies f**(n+1) = A_inv * f**n (Eqn. (19)). Used
-#    to solve the diffusion equation. The quantity f is changed in-place and 
-#    then returned.  
-#    """
-#    # solve for f^(n+1) given f^n according to the diffusion equation
-#    # matrix has already been built + inverted outside this function
-#    f = np.linalg.solve(A, f)
-#    return f

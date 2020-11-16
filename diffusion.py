@@ -18,12 +18,12 @@ rc('text', usetex=True)
 from differencing import diffus_matr_build, diffus 
 
 ## CONSTANTS ##################################################################
-NGRID = 50 # gridsize
+NGRID = 100 # gridsize
 NTSTEPS = 2500 # no. of time steps
 DT = 1 # size of timestep
 DX = 1 # size of spatial step
-D_1 = 0.5 # diffusion coefficient #1
-D_2 = 0.1 # diffusion coefficient #2
+D_1 = 0.08 # diffusion coefficient #1
+D_2 = 0.8 # diffusion coefficient #2
 U = -0.1 # velocity
 
 
@@ -39,7 +39,7 @@ f2 = np.arange(NGRID)*DX/NGRID # for D=D_2
 A1 = diffus_matr_build(NGRID, DX, DT, D_1) # for D=D_1
 A1[0][0] = 1 # set boundary conditions
 A1[0][1] = 0
-A1[-1][-1] = 1 + 2*D_1*DT/(DX**2)
+A1[-1][-1] = 1 + D_1*DT/(DX**2)
 
 A2 = diffus_matr_build(NGRID, DX, DT, D_2) # for D=D_1
 A2[0][0] = 1 # set boundary conditions
