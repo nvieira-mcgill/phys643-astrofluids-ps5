@@ -33,4 +33,8 @@ increasingly unstable. In particular:
   ```AMP=10.0```, the solution blows up, and the amplitude of the sound waves 
   tends to infinity. The hydro solver eventually crashes under these conditions.
 
-A shock begins to appear 
+A shock begins to appear depending on the ratio between dx and dt. In the scheme 
+we used, no viscosity is explicitly included, but we *have* incurred a 
+**"numerical viscosity"** due to the approximations used in the finite differencing
+steps. This numerical viscosity is proportional to dx**2 / dt, and so it is this 
+quantity which sets the width of the shock (Equation (15)). 

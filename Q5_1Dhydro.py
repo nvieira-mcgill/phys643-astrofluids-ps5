@@ -28,7 +28,6 @@ import matplotlib.ticker as ticker
 from matplotlib import rc
 rc('text', usetex=True)
 
-
 ## my script
 from donor_cell import (J_compute,
                         f_update_nosource, f_update_withsource, 
@@ -38,9 +37,9 @@ from donor_cell import (J_compute,
 NGRID = 10000 # gridsize
 NTSTEPS = int(1e5) # no. of time steps
 DT = 1e-3 # size of timestep
-DX = 5e-1 # size of spatial step
+DX = 10e-1 # size of spatial step
 CS = 300 # speed of sound in medium
-AMP = 10.0 # amplitude of the Gaussian perturbation
+AMP = 1.0 # amplitude of the Gaussian perturbation
 OFFSET = 100 # offset of the Gaussian perturbation
 
 ## SETUP ######################################################################
