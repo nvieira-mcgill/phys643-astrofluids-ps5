@@ -1,21 +1,20 @@
 
 
-NAME: Nicholas Vieira
+Nicholas Vieira
 =====================
-PYTHON VERSION: 3.7
+Python 3.7
 ===================
-COLLABORATOR: Sabrina Berger
-============================
+*Collaborator: Sabrina Berger*
 
 This repository contains the following scripts which constitute a library of
 functions:
-- differencing.py
-- donor_cell.py
+- ```differencing.py```
+- ```donor_cell.py```
 
 These scripts are called by the following 3 scripts:
-- Q3_advection.py
-- Q4_diffusion_advection.py
-- Q5_1Dhydro.py
+- ```Q3_advection.py```
+- ```Q4_diffusion_advection.py```
+- ```Q5_1Dhydro.py```
 
 
 The first of which provides the solution to question #3 of the assignment, and so 
