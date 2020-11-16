@@ -6,6 +6,8 @@
 
 **Collaborator: Sabrina Berger**
 
+================================================
+
 This repository contains the following scripts which constitute a library of
 functions:
 - ```differencing.py```
