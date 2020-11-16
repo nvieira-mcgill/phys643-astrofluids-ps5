@@ -23,7 +23,7 @@ forth.
 
 All scripts can be run via the command line via e.g. 
 
-	```>>> python Q3_advection.py```
+	>>> python Q3_advection.py
 
 With the appropriate dependencies, i.e., 
 - matplotlib                3.0.3
