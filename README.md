@@ -4,7 +4,7 @@ Nicholas Vieira
 =====================
 Python 3.7
 ===================
-*Collaborator: Sabrina Berger*
+**Collaborator: Sabrina Berger**
 
 This repository contains the following scripts which constitute a library of
 functions:
