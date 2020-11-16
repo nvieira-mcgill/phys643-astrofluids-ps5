@@ -104,7 +104,7 @@ axes[1].xaxis.set_major_locator(
 
 ## TIME EVOLUTION #############################################################
 minf2 = min(f2) # initial value for minimum of f2
-maxf2 = max(f2) # initial value for maixmum of f2
+maxf2 = max(f2) # initial value for maximum of f2
 for i in range(NTSTEPS):
 
     # compute velocity array according to Eqn. (26)
